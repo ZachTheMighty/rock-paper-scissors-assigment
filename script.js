@@ -4,3 +4,7 @@ function getComputerChoice() {
   else if (randomNumber === 1) return "Paper";
   else return "Scissors";
 }
+
+function getHumanChoice() {
+  return prompt("Rock Paper Scissors?");
+}
