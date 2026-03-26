@@ -58,3 +58,13 @@ function playRound(humanChoice, computerChoice) {
     console.log(humanPaper(computerChoice));
   else console.log(humanScissors(computerChoice));
 }
+
+function playGame() {
+  while (humanScore != 5 && computerScore != 5)
+    playRound(getHumanChoice(), getComputerChoice());
+
+    const score = `Score is ${humanScore}:${computerScore} `;
+  return score + (humanScore === 5 ? "Congrats! bitch :>" : "Hah what a loser");
+}
+
+console.log(playGame());
