@@ -17,8 +17,10 @@ function humanRock(computerChoice) {
     case "Rock":
       return "Draw!";
     case "Paper":
+      computerScore++;
       return "You lose! Paper beats Rock";
     case "Scissors":
+      humanScore++;
       return "You win! Rock beats Scissors";
   }
 }
@@ -26,10 +28,12 @@ function humanRock(computerChoice) {
 function humanPaper(computerChoice) {
   switch (computerChoice) {
     case "Rock":
+      humanScore++;
       return "You win! Paper beats Rock";
     case "Paper":
       return "Draw!";
     case "Scissors":
+      computerScore++;
       return "You lose! Scissors beat Paper";
   }
 }
@@ -37,10 +41,20 @@ function humanPaper(computerChoice) {
 function humanScissors(computerChoice) {
   switch (computerChoice) {
     case "Rock":
+      computerScore++;
       return "You lose! Rock beats Scissors";
     case "Paper":
+      humanScore++;
       return "You win! Scissors beat Paper";
     case "Scissors":
       return "Draw!";
   }
+}
+
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice.toLowerCase() === "rock")
+    console.log(humanRock(computerChoice));
+  else if (humanChoice.toLowerCase() === "paper")
+    console.log(humanPaper(computerChoice));
+  else console.log(humanScissors(computerChoice));
 }
