@@ -1,6 +1,8 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const statement = document.querySelector(".statement");
+
 const container = document.querySelector("#container");
 
 container.addEventListener("click", (e) =>
@@ -59,10 +61,10 @@ function humanScissors(computerChoice) {
 
 function playRound(humanChoice, computerChoice) {
   if (humanChoice.toLowerCase() === "rock")
-    console.log(humanRock(computerChoice));
+    displayResult(humanRock(computerChoice));
   else if (humanChoice.toLowerCase() === "paper")
-    console.log(humanPaper(computerChoice));
-  else console.log(humanScissors(computerChoice));
+    displayResult(humanPaper(computerChoice));
+  else displayResult(humanScissors(computerChoice));
 }
 
 function playGame() {
@@ -71,4 +73,10 @@ function playGame() {
 
   const score = `Score is ${humanScore}:${computerScore} `;
   return score + (humanScore === 5 ? "Congrats! bitch :>" : "Hah what a loser");
+}
+
+function displayResult(result) {
+  statement.textContent = result;
+  document.querySelector(".player-score").textContent = humanScore;
+  document.querySelector(".computer-score").textContent = computerScore;
 }
