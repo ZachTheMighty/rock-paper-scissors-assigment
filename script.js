@@ -1,13 +1,9 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const buttons = document.querySelectorAll("button");
 const statement = document.querySelector(".statement");
-
-const container = document.querySelector("#container");
-
-container.addEventListener("click", (e) =>
-  playRound(e.target.textContent, getComputerChoice()),
-);
+const container = document.querySelector(".container");
 
 function getComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3);
@@ -67,16 +63,23 @@ function playRound(humanChoice, computerChoice) {
   else displayResult(humanScissors(computerChoice));
 }
 
-function playGame() {
-  while (humanScore != 5 && computerScore != 5)
-    playRound(getHumanChoice(), getComputerChoice());
-
-  const score = `Score is ${humanScore}:${computerScore} `;
-  return score + (humanScore === 5 ? "Congrats! bitch :>" : "Hah what a loser");
-}
-
 function displayResult(result) {
   statement.textContent = result;
   document.querySelector(".player-score").textContent = humanScore;
   document.querySelector(".computer-score").textContent = computerScore;
 }
+
+function playGame() {
+  container.addEventListener("click", (e) => {
+    playRound(e.target.textContent, getComputerChoice());
+    if (humanScore === 5 || computerScore === 5) {
+      buttons.forEach((button) => (button.disabled = true));
+      statement.textContent =
+        humanScore > computerScore
+          ? "You win! Congrats, bitch ;>"
+          : "HAH! imagine losing to a bot. what a retard smh";
+      return;
+    }
+  });
+}
+playGame();
