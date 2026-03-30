@@ -1,6 +1,12 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const container = document.querySelector("#container");
+
+container.addEventListener("click", (e) =>
+  playRound(e.target.textContent, getComputerChoice()),
+);
+
 function getComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3);
   if (randomNumber === 0) return "Rock";
@@ -63,8 +69,6 @@ function playGame() {
   while (humanScore != 5 && computerScore != 5)
     playRound(getHumanChoice(), getComputerChoice());
 
-    const score = `Score is ${humanScore}:${computerScore} `;
+  const score = `Score is ${humanScore}:${computerScore} `;
   return score + (humanScore === 5 ? "Congrats! bitch :>" : "Hah what a loser");
 }
-
-console.log(playGame());
